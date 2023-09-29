@@ -1,4 +1,4 @@
-package com.daniellopez.homebank;
+package com.daniellopez.homebank.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,4 +13,6 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+    private String firstName;
+    private String lastName;
 }

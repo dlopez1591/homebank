@@ -41,6 +41,9 @@ public class Account {
     public double getBalance() {
         return balance;
     }
+    public Client getClient(){
+        return client;
+    }
 
     public void setNumber(String number) {
         this.number = number;
@@ -52,5 +55,8 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+    public void setClient (Client client){
+        this.client = client;
     }
 }

@@ -2,10 +2,9 @@ package com.daniellopez.homebank.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -16,6 +15,8 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    Set<Account> accounts = new HashSet<>();
 
     public Client () {}
     public Client (String firstName, String lastName, String email){
@@ -44,6 +45,9 @@ public class Client {
         this.email = email;
     }
 
+    public Set<Account> getAccounts(){
+        return accounts;
+    }
     @Override
     public String toString() {
         return "Client{" +
@@ -52,5 +56,10 @@ public class Client {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public void addAccount (Account account){
+        account.setClient(this);
+        accounts.add(account);
     }
 }

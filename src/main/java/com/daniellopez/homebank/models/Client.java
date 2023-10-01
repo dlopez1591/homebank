@@ -25,6 +25,9 @@ public class Client {
         this.email = email;
     }
 
+    public Long getId(){
+        return id;
+    }
     public String getFirstName(){
         return firstName;
     }
